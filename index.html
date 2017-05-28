@@ -1,0 +1,42 @@
+<!doctype html>
+<head>
+    <title></title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://cdn.rawgit.com/AngularClass/angular-websocket/v2.0.0/dist/angular-websocket.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="app.js"></script>
+    <script src="stockCtrl.js"></script>
+    <script src="stockFactory.js"></script>
+
+    <style ></style>
+
+</head>
+<body ng-app="myApp">
+<div ng-controller="StockCtrl">
+    <h3>Stock App</h3>
+    <table class="table table-striped table-hover table-bordered">
+        <thead>
+            <th>Stock</th>
+            <th>Current Value</th>
+            <th>Last Updated</th>
+        </thead>
+        <tbody>
+        <tr ng-repeat="data in MyData.collection">
+            <td>{{data.name}}</td>
+            <td ng-class="{'success': data.status == 'inc', 'danger': data.status == 'dec'}">{{data.value}}</td>
+            <td>{{data.lastUpdated | date : 'medium'}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
